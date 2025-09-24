@@ -1,0 +1,46 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "Blockchain service for Tourist Safety System using Hyperledger Fabric",
+  "main": "backend/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "mocha backend/tests/**/*.test.js --timeout 30000",
+    "test:blockchain": "mocha backend/tests/blockchain.test.js --timeout 30000",
+    "blockchain:deploy": "node backend/scripts/deployChaincode.js",
+    "blockchain:init": "node backend/scripts/initializeNetwork.js",
+    "demo": "node backend/scripts/demo.js",
+    "fabric:start": "cd ../../fabric-samples/test-network && ./network.sh up createChannel -c mychannel -ca",
+    "fabric:stop": "cd ../../fabric-samples/test-network && ./network.sh down",
+    "fabric:clean": "cd ../../fabric-samples/test-network && ./network.sh down && docker system prune -f",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "Team",
+  "license": "ISC",
+  "packageManager": "pnpm@10.16.1",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "compression": "^1.7.4",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.0",
+    "axios": "^1.12.2",
+    "minio": "^8.0.6",
+    "fabric-network": "^2.2.20",
+    "fabric-ca-client": "^2.2.20",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "mocha": "^10.2.0",
+    "chai": "^6.0.1",
+    "sinon": "^21.0.0"
+  }
+}
